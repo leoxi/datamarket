@@ -1,0 +1,57 @@
+<!doctype html>
+<html dir="ltr" lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <title>数据市场</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="/js/js.js"></script>
+    <script>{% block script %}{% endblock %}</script>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <div class="w1000">
+          <a href="/" class="logo"></a>
+          <div class="nav">
+            <ul class="clearfix">
+              <li><a href="/">首页</a></li>
+              <li><a href="/service">服务</a></li>
+              <li><a href="/product">产品</a></li>
+              <li><a href="/application">应用</a></li>
+              <li><a href="/union">联盟</a></li>
+            </ul>
+            <span class="nav-bar"></span>
+          </div>
+          <ul class="login-bar">
+            {% if user %}
+            <li style="margin-left:-30px;"><a href="/account">用户中心</a></li>
+            <li><a href="/logout" class="loginbtn">注销</a></li>
+            {% else %}
+            <li><a href="/register">注册</a></li>
+            <li><a href="/login" class="loginbtn">登录</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <!-- header ends here -->
+      {% block banner %}
+      <div class="banner">
+        <div class="w1000"><img src="/images/wenzi.png"></div>
+      </div
+      {% endblock %}
+      <!-- banner ends here -->
+      {% block body %}{% endblock %}
+      <!-- main body ends here -->
+      <div class="footer">
+	<div class="w1000 clearfix">
+	  <p>Copyright ©2013  天云数据市场  All Rights Reserved.   京ICP证151235624号</p>
+	  <div><a href="#">品牌合作</a>　|　<a href="#">网站地图</a>　|　<a href="#">社会招聘</a>　|　<a href="#">联系我们</a></div>
+	</div>
+      </div>
+      <!-- footer ends here -->
+    </div>
+    <!-- wrap ends here -->
+  </body>
+</html>

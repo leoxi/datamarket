@@ -1,0 +1,83 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function() {
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+      <div class="crumbs">
+	<div><a href="#">网站首页</a></div>&nbsp;/&nbsp;<span>产品</span>
+      </div>
+      <div class="search">
+	<div class="search-c">
+	  <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>
+	  <input type="submit" value="搜索" class="btn">
+	</div>
+	<div class="tag">热门Tag ：<a href="#">公有云</a>&nbsp;&nbsp;<a href="#">联盟</a>&nbsp;&nbsp;<a href="#">航天数据</a></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/pro_app_sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="main-content-list">
+
+	<ul class="list">
+          {% for i in info %}
+	  <li>
+	    <div class="list-title">
+              <div class="right"></div>
+              <h3><a href="/product/{{ i.id }}">{{ i.title }}</a></h3>
+            </div>
+	    <p>
+              <span>格式：</span>{{ i.format_name }}&nbsp;&nbsp;&nbsp
+              <span>发布日期：</span>{{ i.pubdate|date:longDate }}&nbsp;&nbsp;&nbsp
+              <span>数据标价：</span>￥{{ i.price }}
+            </p>
+	    <p>{{ i.desc }}</p>
+	    <p>
+              <span>来源分类：</span>{{ i.source_name }};&nbsp;&nbsp;
+              <span>分类：</span>{{ i.catalog_name }}&nbsp;&nbsp;&nbsp;
+            </p>
+            <dl class="buy">
+              <dt>价格<span>￥{{ i.price }}</span></dt>
+              <dd><a href="#" class="btn sy">试用</a><a href="#" class="btn gm">购买</a></dd>
+            </dl>
+	  </li>
+          {% endfor %}
+	</ul>
+
+	<!-- <div class="pages"> -->
+	<!--   <strong>共234条结果</strong> -->
+	<!--   <a href="#" class="active">1</a> -->
+	<!--   <a href="#">2</a> -->
+	<!--   <a href="#">3</a> -->
+	<!--   <a href="#">4</a> -->
+	<!--   <a href="#">5</a> -->
+	<!--   ... -->
+	<!--   <a href="#">18</a> -->
+	<!--   <a href="#" class="nepr">下页></a> -->
+	<!-- </div> -->
+
+      </div>
+    </div>
+    <div class="clearit"></div>
+  </div>
+  <div class="app greybg">
+    <div class="w1000">
+      <h2>一个大规模生产、分享、应用数据的时代正在开启！</h2>
+      <div class="app-c">
+	<a href="#" class="app-ios"></a>
+	<a href="#" class="app-android"></a>
+      </div>
+    </div>	
+  </div>  
+</div>
+{% include "datamarket/views/email.html" %}
+{% endblock %}

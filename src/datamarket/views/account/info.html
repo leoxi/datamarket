@@ -1,0 +1,75 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+      <div class="crumbs">
+        <div><a href="#">网站首页</a></div>&nbsp;/&nbsp;<span><a href="index.html">成员中心</a></span>&nbsp;/&nbsp;<span>账户管理</span>
+      </div>
+      <div class="search">
+        <div class="search-c">
+          <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>
+          <input type="submit" value="搜索" class="btn">
+        </div>
+        <div class="tag"></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/account/sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="main-content-list">
+        <ul class="list">
+          <li>
+            <div class="list-title" style="margin-bottom:20px;"><h3>账户信息</h3></div>
+            <div class="accountForm">
+              <form id="changeinfo" name="changeinfo" method="post" action="">
+                <p>
+                  <label>用户名：</label>
+                  test
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>电子邮件：</label>
+                  a@a.com
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>企业名称：</label> 
+                  aaa
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>联系人：</label>
+                  oaaa
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>联系电话：</label>
+                  aa
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>&nbsp;</label>
+                  <input id="submit" name="submit" class="btn-submit" type="submit" value="修改" />
+                  <input type="hidden" name="action" value="changeinfo" />
+                  <input type='hidden' name='csrfmiddlewaretoken' value='GCHVvrRI03FgqVvoReNTk6LMLUvOiLUY' />
+                </p>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearit"></div>
+  </div>
+</div>
+{% endblock %}

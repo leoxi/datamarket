@@ -1,0 +1,84 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    $(".sub-nav").scrollspy();
+    backTop();
+});
+//滚动监听
+(function($){
+    $.fn.scrollspy = function(options) {
+        $(this).each(function(index, element) {
+            var elem = $(this);
+            var a = elem.offset().top;
+            var b = $(document).scrollTop();
+            var c = elem.outerHeight();
+            var d = elem.find("a[data-href]");
+            var e =[];
+            if(b >= a){
+                elem.addClass("active")
+            }else{
+                elem.removeClass("active")
+            }
+            d.each(function(index, element) {
+                var f = $(this).attr("data-href");
+                var g = $(f);
+                var h = g.offset().top;
+                e.push(h-c);
+                $(this).on("click",function(){
+                    $("body,html").animate({scrollTop:(h-c)});
+                });
+            });
+            $(window).on("scroll",function(){
+                var b = $(document).scrollTop();
+                if(b >= a){
+                    elem.addClass("active")
+                }else{
+                    elem.removeClass("active")
+                }
+                for(var i=0; i< e.length ;i++){
+                    if(b >= e[i]){
+                        d.removeClass("active").eq(i).addClass("active");
+                    }
+                }
+            })
+        });
+    }
+})(jQuery);
+  {% endblock %}
+
+{% block body %}
+  <div class="main">
+    <div class="contentReg">
+      <div class="log" id="c4">
+        <div class="w1000">
+          <div class="clearfix">
+            <form id="regform" name="regform" method="post" action="/login-submit">
+
+              <div class="log-form">
+                <div class="subtitle">联盟成员登陆</div>
+                <p>
+                  <label>用户名：</label>
+                  <input type="text" value="" id="name" name="name" />
+                </p>
+                <p>
+                  <label>密码：</label>
+                  <input type="password" value="" id="password" name="password" />
+                </p>
+                <p>
+                  <label>&nbsp;</label>
+                  <input class="btn-log" type="submit" value="登陆" />
+                  <input type='hidden' name='csrfmiddlewaretoken' value='bZcwsIN5KKHcGysW7uSod2omdounQ5zS' />
+                </p>
+              </div>
+            </form>
+          </div>
+          {% if errors %}
+          <span style="margin-left: 30px; color: red;">* {{ errors }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

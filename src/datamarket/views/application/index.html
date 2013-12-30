@@ -1,0 +1,75 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+window.onload = function(){
+    fnShow();
+}
+$(function() {
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+      <div class="crumbs">
+	<div><a href="#">网站首页</a></div>&nbsp;/&nbsp;<span>应用</span>
+      </div>
+      <div class="search">
+	<div class="search-c">
+	  <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>
+	  <input type="submit" value="搜索" class="btn">
+	</div>
+	<div class="tag">热门Tag ：<a href="#">公有云</a>&nbsp;&nbsp;<a href="#">联盟</a>&nbsp;&nbsp;<a href="#">航天数据</a></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/pro_app_sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="main-content-list">
+	<ul class="list">
+          {% for i in info %}
+	  <li>
+	    <div class="list-title">
+              <h3><a href="/application/{{ i.id }}">{{ i.title }}</a>
+                <span class="right">
+                  <a href="{{ i.file_links }}" target="_blank">【Demo演示】</a>
+                  <a href="#" class="unfold">【展开详情】</a>
+                </span>
+              </h3>
+            </div>
+            <div class="list-a j-show">
+              <p>{{ i.desc }}</p>
+              <!-- <p class="p-img"><img src="images/picinfo.jpg"></p> -->
+            </div>
+            <p>
+              <span>来源分类：</span>{{ i.source_name }};&nbsp;&nbsp;
+              <span>分类：</span>{{ i.catalog_name }}&nbsp;&nbsp;
+            </p>
+            <dl class="buy">
+              <dt>价格<span>￥{{ i.price }}</span></dt>
+              <dd><a href="#" class="btn sy">试用</a><a href="#" class="btn gm">购买</a></dd>
+            </dl>
+	  </li>
+          {% endfor %}
+	</ul>
+ 
+      </div>
+    </div>
+    <div class="clearit"></div>
+  </div>
+  <div class="app greybg">
+    <div class="w1000">
+      <h2>一个大规模生产、分享、应用数据的时代正在开启！</h2>
+      <div class="app-c">
+	<a href="#" class="app-ios"></a>
+	<a href="#" class="app-android"></a>
+      </div>
+    </div>	
+  </div>  
+</div>
+{% include "datamarket/views/email.html" %}
+{% endblock %}

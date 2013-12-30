@@ -1,0 +1,93 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+
+      {% include "datamarket/views/crumbs.html" %}
+
+      <div class="search">
+        <div class="search-c">
+          <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>
+          <input type="submit" value="搜索" class="btn">
+        </div>
+        <div class="tag"></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/account/sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="main-content-list">
+        <ul class="list">
+          <li>
+            <div class="list-title" style="margin-bottom:20px;"><h3>发布新的数据</h3></div>
+            <div class="accountForm">
+              <form id="datasetadd" name="datasetadd" method="post" action="product-submit">
+                <p>
+                  <label>标题：</label>
+                  <input type="text" value="" id="title" name="title" />
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>描述：</label>
+                  <textarea id="description" name="desc"></textarea>
+                </p>
+                <p>
+                  <label>格式：</label>
+                  <input type="radio" value="1" id="dataformat1" name="format" />文本
+                  <input type="radio" value="2" id="dataformat2" name="format" />图像
+                  <input type="radio" value="3" id="dataformat3" name="format" />视频
+                  <input type="radio" value="4" id="dataformat4" name="format" />音频
+                </p>
+                <p>
+                  <label>分类：</label>
+                  <input type="radio" value="1" id="category1" name="category" />电信
+                  <input type="radio" value="2" id="category2" name="category" />金融
+                  <input type="radio" value="3" id="category3" name="category" />政府
+                  <input type="radio" value="4" id="category4" name="category" />医疗
+                  <input type="radio" value="5" id="category5" name="category" />互联网
+                </p>
+                <p>
+                  <label>来源分类：</label>
+                  <input type="radio" value="1" id="sourcetype1" name="source_type" />公共数据
+                  <input type="radio" value="2" id="sourcetype2" name="source_type" />联盟数据
+                </p>
+                <p>
+                  <label>来源：</label>
+                  <input type="text" value="" id="source" name="source" />
+                  <span>&nbsp;</span>
+                </p>
+                <!-- <p> -->
+                <!--   <label>标签：</label> -->
+                <!--   <input type="text" value="" id="tags" name="tags" /> -->
+                <!--   <span>&nbsp;</span> -->
+                <!-- </p> -->
+                <p>
+                  <label>标价：</label>
+                  <input type="text" value="" id="price" name="price" />
+                  <span>&nbsp;</span>
+                </p>
+                <p>
+                  <label>&nbsp;</label>
+                  <input id="submit" type="submit" value="添加" />
+                </p>
+              </form>
+            </div>
+            {% if error %}<span style="margin-left: 20px; color: red;">*{{ error }}</span>{% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearit"></div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+      <div class="crumbs">
+	<div><a href="#">网站首页</a></div>&nbsp;/&nbsp;<span>成员中心</span>
+      </div>
+      <div class="search">
+	<div class="search-c">
+	  <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>
+	  <input type="submit" value="搜索" class="btn">
+	</div>
+	<div class="tag"></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/account/sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="accountConBox">
+        <div class="accountBox">
+          <a href="#">
+            <img src="../images/photoholder_male_234x234.jpg" class="avatar floatToLeft" />
+          </a>
+          <div class="accountInfo">
+            <ul>
+              <li class="userName">{{ user-info.name }}</li>
+              <li><strong>姓名：</strong><span>{{ user-info.contract }}</span></li>
+              <li><strong>电话：</strong><span>{{ user-info.phone }}</span></li>
+              <li><strong>公司：</strong><span>{{ user-info.company }}</span></li>
+              <li><strong>电子邮箱：</strong><span>{{ user-info.mail }}</span></li>
+              <li><strong>上次登录：</strong><span>{{ user-info.last_login_time|date:longDate }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      
+      <div class="account-list">
+	<div class="account-title"><h3>数据基本情况</h3></div>
+        <ul class="accountDataInfo">
+          <li>
+            成功发布数据 <br />
+            <span> 0 </span>
+          </li>
+          <li>
+            审核中的数据<br />
+            <span> 0 </span>
+          </li>
+          <li>
+            数据被评论<br />
+            <span> 0 </span>
+          </li>
+          <li>
+            数据被下载<br />
+            <span> 0 </span>
+          </li>
+        </ul>
+      </div>
+      <!-- account-list ends here -->
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+{% endblock %}

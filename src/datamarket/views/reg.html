@@ -1,0 +1,160 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    $(".sub-nav").scrollspy();
+    backTop();
+});
+//滚动监听
+(function($){
+    $.fn.scrollspy = function(options) {
+    $(this).each(function(index, element) {
+        var elem = $(this);
+        var a = elem.offset().top;
+        var b = $(document).scrollTop();
+        var c = elem.outerHeight();
+        var d = elem.find("a[data-href]");
+        var e =[];
+        if(b >= a){
+            elem.addClass("active")
+        }else{
+            elem.removeClass("active")
+        }
+        d.each(function(index, element) {
+            var f = $(this).attr("data-href");
+            var g = $(f);
+            var h = g.offset().top;
+            e.push(h-c);
+            $(this).on("click",function(){
+                $("body,html").animate({scrollTop:(h-c)});
+            });
+        });
+        $(window).on("scroll",function(){
+            var b = $(document).scrollTop();
+            if(b >= a){
+                elem.addClass("active")
+            }else{
+                elem.removeClass("active")
+            }
+            for(var i=0; i< e.length ;i++){
+                if(b >= e[i]){
+                    d.removeClass("active").eq(i).addClass("active");
+                }
+            }
+        })
+    });
+}
+})(jQuery);
+{% endblock %}
+
+{% block body %}
+  <div class="main">
+    <div class="contentReg">
+      <div class="case join" id="c4">
+        <div class="w1000">
+          <div class="clearfix">
+            <form id="reg-form" name="reg-form" method="post" action="/reg-submit">
+              <div class="join-form">
+                <div class="subtitle">
+                  <div align="center">联盟成员注册
+                  </div>
+                </div>
+                <p align="center">
+                  <label>用户名：</label>
+                  <input type="text" id="name" name="name" />
+                </p>
+                <p align="center">
+                  <label>密码：</label>
+                  <input type="password" id="password" name="password" />
+                </p>
+                <p align="center">
+                  <label>确认密码：</label>
+                  <input type="password" id="re-password" name="re-password" />
+                </p>
+                <p align="center">
+                  <label>企业名称：</label>
+                  <input type="text" id="company" name="company" />
+                </p>
+                <p align="center">
+                  <label>联系人：</label>
+                  <input type="text" id="contract" name="contract" />
+                </p>
+                <p align="center">
+                  <label>联系电话：</label>
+                  <input type="text" id="phone" name="phone" />
+                </p>
+                <p align="center">
+                  <label>电子邮件：</label>
+                  <input type="text" id="mail" name="mail" />
+                </p>
+                <p align="center">
+                  <label>&nbsp;</label>
+                  <input class="btn-submit" type="submit" value="同意右侧协议并注册" />
+                </p>
+              </div>
+              <div class="protocol">
+                <h2 align="center">数据联盟合作框架协议</h2>
+                <p align="center">本合作协议由下述各方于2013年   月  日在北京签订：</p>
+                <p align="center">甲方：                                有限公司 </p>
+                <p align="center">地址：</p>
+                <p align="center">乙方：</p>
+                <p align="center">天云融创数据科技(北京)有限公司</p>
+                <p align="center">地址：北京市亦庄经济技术开发区地盛北街1号北工大软件园B区18号楼</p>
+                <p align="center">鉴于：</p>
+                <p align="center">1、甲方是一家</p>
+                <p align="center">2、乙方是一家专注于大数据解决方案与产品研发的领先进入者，率先采用创新性的大数据技术与商业模式，帮助企业实现数据资本价值最大化。</p>
+                <p align="center">3、数据联盟是由乙方创建的数据共享与服务平台，旨在使企业、政府及公共部门和学术界能共同参与，互惠互利，为各方提供数据资源及应用和托管服务。</p>
+                <p align="center">基于对上述陈述与期望的共同理解，双方达成如下一致意见：</p>
+                <p align="center">一、合作</p>
+                <p align="center">1. 合作宗旨：</p>
+                <p align="center">充分发挥甲、乙双方多年来在各自领域积累的数据资源和能力的优势，特别是甲方持有的内部数据资源，乙方组织与维护的数据联盟和数据资源共享平台，以及先进的数据处理和挖掘工具。甲、乙双方结合大数据的新技术、新产品、新应用，共同探索新的业务运营及商业模式，寻求互补双赢的合作空间。</p>
+                <p align="center">2. 合作方式：</p>
+                <p align="center">甲、乙双方成立对接工作组，合作初期可分别投入、共享信息、紧密配合，设立工作目标，建立日常沟通协同机制。</p>
+                <p align="center">3. 合作内容：</p>
+                <p align="center">1）甲方加入乙方组织的数据联盟，并在法律许可和不影响甲方业务的基础之上，向数据联盟共享数据资源，乙方须保证维护甲方对数据的持有权，并向第三方以API的形式提供有偿数据访问服务，甲方获得数据收益，乙方获得交易佣金，数据定价权由买卖双方共同决定。</p>
+                <p align="center">2）乙方可通过对原始数据资源进行加工、聚合为新的数据产品，向第三方以API的形式提供有偿数据访问服务，获得收益由甲、乙双方共同商议后分配。</p>
+                <p align="center">3）甲方根据自身业务发展需要，可向乙方提出外部数据需求，乙方通过整合资源和技术，提供外部数据需求解决方案。</p>
+                <p align="center">4）乙方向甲方分享成功的大数据案例经验。</p>
+                <p align="center">5）双方共同探讨在        领域的大数据应用及合作，并提出解决方案。</p>
+                <p align="center">4. 合作利益分享：</p>
+                <p align="center">甲、乙双方在合作过程中或未来的收益，由双方依据具体项目另行协商并签订书面协议。</p>
+                <p align="center">5. 合作启动：</p>
+                <p align="center">本协议签署后，甲、乙方双方即成立对接工作组，推动并负责各项合作的实施及目标达成。</p>
+                <p align="center">对接工作组的构成：</p>
+                <p align="center">组长： </p>
+                <p align="center">组员：</p>
+                <p align="center">工作组联络人： </p>
+                <p align="center">二、合作期限、退出与终止</p>
+                <p align="center">1. 甲、乙双方同意合作期限自本协议签订之日起为期壹(1) 年，合作到期前壹（1）个月时，如双方没有提出书面异议，双方的合作将自动延续，延续期限壹（1）年。</p>
+                <p align="center">2. 本协议履行过程中，如遇到不可抗力导致甲、乙双方或一方不能完全履行本协议各项有关条款时，则本协议自动终止。</p>
+                <p align="center">三、保密</p>
+                <p align="center">1. 双方同意就各自从其他任何一方知悉的保密信息承担保密义务，并对其采取与对自身拥有的保密信息相同程度的保密措施（在任何情况下该保密措施均应合理）。保密信息是指经任何一方以口头或书面形式披露的，与本备忘录或本次合作相关的信息，包括但不限于项目方案、规划、商业计划、产品报价、技术参数以及各自客户的信息。</p>
+                <p align="center">2. 除非为履行本协议，否则不得使用此种保密信息；除非是遵照政府机构的要求，或是履行法定披露义务，或是取得另一方的书面许可，否则，任何一方均不得通过公开或是其他方式，向未受前述保密义务约束的合作方及双方雇员，以及依据本协议实现权利或是履行义务而需知悉保密信息的人员以外的第三人披露任何保密信息。</p>
+                <p align="center">3. 任何一方有违反保密义务的情形，无论故意与过失，应当立即停止侵害，并在第一时间采取一切必要措施防止保密信息的扩散，尽最大可能消除影响。一方违反保密义务造成损害的，受损害方可向违约方要求损害赔偿，该等赔偿以受损害方实际遭受的损失为限。</p>
+                <p align="center">四、其他</p>
+                <p align="center">1. 本合同的订立、履行、解释均应适用中华人民共和国法律。在合同的履行的过程中产生的争议经友好协商无法解决的，任何一方均有权将该争议提交北京仲裁委员会仲裁解决，该仲裁裁决为终局，对双方均有约束力。</p>
+                <p align="center">2. 本协议自双方法定代表人或授权代表签字盖章后生效。</p>
+                <p align="center">3. 本协议履行的过程中所达成的补充协议、本协议的附件，均为本协议不可分割的一部分，与本协议具有同等法律效力。</p>
+                <p align="center">4. 本协议一式四份，双方各执两份，具有同等法律效力。</p>
+                <p align="center">（本页以下无正文）</p>
+                <p align="center">（签署页）</p>
+                <p align="center">甲方： </p>
+                <p align="center">签字：</p>
+                <p align="center">职务：</p>
+                <p align="center">日期：</p>
+                <p align="center">乙方：天云融创数据科技(北京)有限公司</p>
+                <p align="center">签字：</p>
+                <p align="center">职务：</p>
+                <p align="center">日期：</p>
+              </div>
+            </form>
+          </div>
+          {% if errors %}
+          <span style="color:red; margin-left: 30px;">{{ errors }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

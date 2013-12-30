@@ -1,0 +1,58 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+      <div class="crumbs">
+	<div><a href="#">网站首页</a></div>&nbsp;/&nbsp;<span>产品</span>
+      </div>
+      <div class="search">
+	<div class="search-c">
+	  <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>
+	  <input type="submit" value="搜索" class="btn">
+	</div>
+	<div class="tag">热门Tag ：<a href="#">公有云</a>&nbsp;&nbsp;<a href="#">联盟</a>&nbsp;&nbsp;<a href="#">航天数据</a></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/pro_app_sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="main-content-list">
+	<ul class="info">
+	  <li>
+	    <div class="info-title"><h3>{{ info.title }}</h3></div>
+            <div class="source">
+              <span>来源分类：</span>{{ info.source_name }};&nbsp;&nbsp;
+              <span>分类：</span>{{ info.catalog_name }}&nbsp;&nbsp;&nbsp;
+	    <div class="price" style="margin-left: 50px;">价格：￥ {{ info.price }}</div>
+	  </li>
+	</ul>
+        <div class="clearfix"></div>
+        <div class="main-c-box">
+          <p>{{ info.desc }}</p>
+        </div>
+        <div class="main-c-btn">
+          <a href="#" class="btn">试用</a>
+          {% if app %}
+          <br><br>
+          <span>演示链接： </span>{{ info.file_links }}
+          {% endif %}
+        </div>
+        <div class="main-c-box">
+          <p><span>来源分类：{{ info.source_name }}</span></p>
+          <p><span>分类：{{ info.catalog_name }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="clearit"></div>
+  </div>
+</div>
+{% endblock %}

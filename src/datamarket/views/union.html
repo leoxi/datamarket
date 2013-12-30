@@ -1,0 +1,155 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function() {
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    $(".sub-nav").scrollspy();
+    backTop();
+});
+//滚动监听
+(function($){
+    $.fn.scrollspy = function(options) {
+        $(this).each(function(index, element) {
+            var elem = $(this);
+            var a = elem.offset().top;
+            var b = $(document).scrollTop();
+            var c = elem.outerHeight();
+            var d = elem.find("a[data-href]");
+            var e =[];
+            if(b >= a){
+                elem.addClass("active")
+            }else{
+                elem.removeClass("active")
+            }
+            d.each(function(index, element) {
+                var f = $(this).attr("data-href");
+                var g = $(f);
+                var h = g.offset().top;
+                e.push(h-c);
+                $(this).on("click",function(){
+                    $("body,html").animate({scrollTop:(h-c)});
+                });
+            });
+            $(window).on("scroll",function(){
+                var b = $(document).scrollTop();
+                if(b >= a){
+                    elem.addClass("active")
+                }else{
+                    elem.removeClass("active")
+                }
+                for(var i=0; i< e.length ;i++){
+                    if(b >= e[i]){
+                        d.removeClass("active").eq(i).addClass("active");
+                    }
+                }
+            })
+        });
+    }
+})(jQuery);
+{% endblock %}
+
+{% block body %}
+  <div class="main">
+    <div class="sub-nav">
+      <div class="w1000">
+        <ul>
+          <li>
+            <a data-href="#c1" href="javascript:;" class="active"><span class="m-name">数据联盟介绍</span><span class="s-name">Intro</span></a>
+          </li>
+          <li>
+            <a data-href="#c2" href="javascript:;"><span class="m-name">数据联盟业务范围</span><span class="s-name">Range</span></a>
+          </li>
+          <li>
+            <a data-href="#c3" href="javascript:;"><span class="m-name">数据联盟成员</span><span class="s-name">Members</span></a>
+          </li>
+          <!-- <li> -->
+          <!--   <a data-href="#c4" href="javascript:;"><span class="m-name">数字图像处理 & 人脸识别</span><span class="s-name">Digital & Face recognition</span></a> -->
+          <!-- </li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div class="union" id="c1">
+        <div class="w1000">
+          <div class="clearfix">
+            <div class="left">
+              <h3>数据联盟介绍</h3>
+              <p>数据联盟是数据共享与服务平台，旨在使企业、政府及公共部门和学术界能共同参与，互惠互利，为各方提供数据资源及应用和托管服务。</p>
+              <ul>
+                <li>面向企业、政府及公共部门和研究机构而建设的数据共享与服务平台</li>
+                <li>面向数据需求方提供公共和私有数据的加工、中介及托管服务</li>
+              </ul>
+            </div>
+            <div class="right"><img src="images/jsimg.png"></div>
+          </div>
+        </div>
+      </div>
+      <div class="case business greybg" id="c2">
+        <div class="w1000">
+          <div class="clearfix">
+            <div class="left"><img src="images/ywimg.png"></div>
+            <div class="right">
+              <h3>数据联盟业务范围</h3>
+              <ul>
+                <li>组织、实施及运维数据资源共享联盟网站</li>
+                <li>招募联盟成员，收集共享数据资源</li>
+                <li>组织制定数据资源共享建设的规范标准</li>
+                <li>数据定价管理和数据质量管理</li>
+                <li>数据交易规则制定和支持</li>
+                <li>提供数据加工、定制服务</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case member" id="c3">
+        <div class="w1000">
+          <div class="clearfix">
+            <div class="left">
+              <h3>数据联盟成员</h3>
+              <p>联盟成员是企业数据的拥有者，愿意通过数据市场有偿或者无偿分享数据或者应用，同时能够方便地获得其他联盟成员开放的数据，用于企业自身的经营决策。</p>
+              <h4>为什么要加入数据联盟？</h4>
+              <ul>
+                <p class="mt">优先满足外部数据需求</p>
+                <li>每个企业都在努力获得更多的数据，包括：用户特征及行为，渠道，竞争对手等信息</li>
+                <li>移动互联网、社交网络凸显了外部数据的价值</li>
+              </ul>
+              <ul>
+                <p class="mt">获取数据价值收入</p>
+                <li>拥有庞大用户的企业，收集的海量信息将成为新的收入</li>
+                <li>认识到数据的价值，将帮助企业更好的推广端到端的流程</li>
+              </ul>
+              <ul>
+                <p class="mt">融合数据，提升企业竞争力</p>
+                <li>内部与外部数据融合的价值</li>
+              </ul>
+            </div>
+            <div class="right">
+              <img src="images/cyimg.png">
+              <h4>如何成为联盟成员？</h4>
+              <ul>
+                <li><img src="images/step.png"></li>
+              </ul>
+              <h4>已签约联盟成员：</h4>
+              <ul>
+                <li><img alt="" src="images/cloudvalley.png"></li>
+                <li><img alt="" src="images/beagledata.png"></li>
+                <li><img alt="" src="images/chinacloud.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app">
+      <div class="w1000">
+        <h2>一个大规模生产、分享、应用数据的时代正在开启！</h2>
+        <div class="app-c">
+          <a href="#" class="app-ios"></a>
+          <a href="#" class="app-android"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include "datamarket/views/email.html" %}
+{% endblock %}

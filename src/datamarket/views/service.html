@@ -1,0 +1,144 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    $(".sub-nav").scrollspy();
+    backTop();
+});
+//滚动监听
+(function($){
+    $.fn.scrollspy = function(options) {
+        $(this).each(function(index, element) {
+            var elem = $(this);
+            var a = elem.offset().top;
+            var b = $(document).scrollTop();
+            var c = elem.outerHeight();
+            var d = elem.find("a[data-href]");
+            var e =[];
+            if(b >= a){
+                elem.addClass("active")
+            }else{
+                elem.removeClass("active")
+            }
+            d.each(function(index, element) {
+                var f = $(this).attr("data-href");
+                var g = $(f);
+                var h = g.offset().top;
+                e.push(h-c);
+                $(this).on("click",function(){
+                    $("body,html").animate({scrollTop:(h-c)});
+                });
+            });
+            $(window).on("scroll",function(){
+                var b = $(document).scrollTop();
+                if(b >= a){
+                    elem.addClass("active")
+                }else{
+                    elem.removeClass("active")
+                }
+                for(var i=0; i< e.length ;i++){
+                    if(b >= e[i]){
+                        d.removeClass("active").eq(i).addClass("active");
+                    }
+                }
+            })
+        });
+    }
+})(jQuery);
+{% endblock %}
+
+{% block body %}
+  <div class="main">
+    <div class="sub-nav">
+      <div class="w1000">
+        <ul>
+          <li>
+            <a data-href="#c1" href="javascript:;" class="active"><span class="m-name">平台服务</span><span class="s-name">Servise</span></a>
+          </li>
+          <li>
+            <a data-href="#c2" href="javascript:;"><span class="m-name">数据加工</span><span class="s-name">Data</span></a>
+          </li>
+          <li>
+            <a data-href="#c3" href="javascript:;"><span class="m-name">自然语言处理</span><span class="s-name">Language</span></a>
+          </li>
+          <li>
+            <a data-href="#c4" href="javascript:;"><span class="m-name">数字图像处理 & 人脸识别</span><span class="s-name">Digital & Face recognition</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div class="case servise" id="c1">
+        <div class="w1000">
+          <div class="clearfix">
+            <div class="left">
+              <h3>平台服务</h3>
+              <p>天云大数据依靠自主研发的大数据系列产品BDX（BDP、BDF、BDA）为企业用户提供大数据服务，帮助企业就绪大数据生产力，建立大数据生产线，批量、自动化生产知识和数据产品。</p>
+            </div>
+            <div class="right"><img src="images/ptimg.jpg"></div>
+          </div>
+          <div class="case-list">
+            <h4>BDP（大数据平台）</h4>
+            <p>BDP是一款集企业友好性，流计算，高可用及容灾和SQL on Hadoop 为一体的大数据平台，旨在解决大数据进入企业的过程中如何适应企业的生长环境，与企业已有的生态系统的方方面面共同生存的问题。快速就绪企业级大数据能力，实现数据工厂式的自动化生产。</p>
+          </div>
+          <div class="case-list">
+            <h4>BDF（大数据流引擎）</h4>
+            <p>BDF提供了面向文件，数据和应用的信息整合能力，以及丰富的预定义组件和自定义组件功能，使业务人员可以根据业务需要，自由组合创建工作流，并可以对工作流的运行状态进行监控，对历史运行任务进行统计跟踪。</p>
+          </div>
+          <div class="case-list">
+            <h4>BDA（大数据加速器）</h4>
+            <p>大数据规模化处理信息如同工业革命的机器人批量生产工业品，只是生产资料变成了数据。大数据加速器(BDA)实现了科学计算的批量生产，助力企业实现数据价值呈现的自动化。</p>
+          </div>
+        </div>
+      </div>
+      <div class="case data greybg" id="c2">
+        <div class="w1000">
+          <div class="clearfix">
+            <div class="left"><img src="images/sjimg.png"></div>
+            <div class="right">
+              <h3>数据加工</h3>
+              <div class="case-list">
+                <h4>基本加工：</h4>
+                <p>数据清洗、数据除重、数据转换；</p>
+              </div>
+              <div class="case-list">
+                <h4>文本语料加工：</h4>
+                <p>句法树库标注、情感语料标注、事件语料标注、词义消歧语料标注、机器翻译语料标注等；</p>
+              </div>
+              <div class="case-list">
+                <h4>专业词典建设：</h4>
+                <p>包括通用词典、语义相关词典、相似词典、情感词典、各行业及各领域词典等.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="case language" id="c3">
+        <div class="w1000">
+          <h3>自然语言处理</h3>
+          <div class="clearfix">
+            <ul class="left">
+              <li>文本信息采集及处理</li>
+              <li class="pr20">分词库、分词模型和词性标注</li>
+              <li class="pr35">关键字抽取</li>
+              <li class="pr40">自动文摘</li>
+              <li class="pr35">主题抽取</li>
+              <li class="pr20">情感分析</li>
+              <li>文本分类</li>
+            </ul>
+            <div class="right"><img src="images/languageimg.png"></div>
+          </div>
+        </div>
+      </div>
+      <div class="case greybg digital" id="c4">
+        <div class="w1000">
+          <h3>数字图像处理 & 人脸识别</h3>
+          <div><img src="images/digitalimg.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include "datamarket/views/email.html" %}
+{% endblock %}

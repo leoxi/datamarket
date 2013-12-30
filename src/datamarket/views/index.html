@@ -1,0 +1,162 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".focus").jFocusFade({
+        animSpeed: 1000,
+        pauseTime: 8000,
+    });
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+
+{% block banner %}
+<div class="focus">
+  <ul>
+    <li style="background:url(images/pic1.jpg) no-repeat center top">
+      <div class="mSc-main">
+        <b><img src="images/sj.png"></b>
+        {% if not user %}
+        <a href="/register"></a>
+        {% endif %}
+      </div>
+    </li>
+    <li style="background:url(images/pic2.jpg)">
+      <div class="mSc-main">
+        <b><img src="http://gtms01.alicdn.com/tps/i1/T1oXw7Fc4XXXc98u3P-760-210.png"></b>
+        <a href="#"></a>
+      </div>
+    </li>
+    <li style="background:url(images/pic1.jpg) no-repeat center top">
+      <div class="mSc-main">
+        <b><img src="images/sj.png"></b>
+        {% if not user %}
+        <a href="/register"></a>
+        {% endif %}
+      </div>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="main">
+  <div class="top">
+    <div class="w1000">
+      <p>一个大规模生产、分享、应用数据的时代正在开启！</p>
+      <div class="com">
+        <a href="#"><img src="images/wb.png"></a>
+        <a href="#"><img src="images/wx.png"></a>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="w1000">
+      <ul class="clearfix">
+        <li>
+          <div>
+            <span>
+              <i class="icon150 icon150-4"></i>
+              <i class="icon150 icon150-1 op"></i>
+            </span>
+            <h3>数据集结中心</h3>
+            <p>数据市场，是海量数据的集结中心，通过汇集各类随时可用的公共或私有的数据，帮助企业、政府、组织机构等把握纷繁复杂的商业及社会环境</p>
+            <a href="#">read more</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span>
+              <i class="icon150 icon150-5"></i>
+              <i class="icon150 icon150-2 op"></i>
+            </span>
+            <h3>数据集结中心</h3>
+            <p>数据市场，是海量数据的集结中心，通过汇集各类随时可用的公共或私有的数据，帮助企业、政府、组织机构等把握纷繁复杂的商业及社会环境</p>
+            <a href="#">read more</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span>
+              <i class="icon150 icon150-6"></i>
+              <i class="icon150 icon150-3 op"></i>
+            </span>
+            <h3>数据集结中心</h3>
+            <p>数据市场，是海量数据的集结中心，通过汇集各类随时可用的公共或私有的数据，帮助企业、政府、组织机构等把握纷繁复杂的商业及社会环境</p>
+            <a href="#">read more</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="layout1">
+    <div class="w1000">
+      <div class="title">
+        <h2>数据联盟动态</h2>
+        <p>大数据的科学价值和社会价值正式体现在一方面，对大数据的掌握程度可以转为经济价值的来源；<br>另一方面，大数据已经撼动了世界的方方面面，从商业科技到医疗、政府、教育、经济、人文以及社会的其他各个领域。</p>
+      </div>
+      <ul class="layout1-c clearfix">
+        <li class="box text-right">
+          <div class="box-icon1">
+            <h3>最新数据集合</h3>
+            <ul>
+              <li><a href="#">数据服务(4)</a></li>
+              <li><a href="#">数据产品(2)</a></li>
+              <li><a href="#">数据联盟(2)</a></li>
+              <li><a href="#">会员中心(4)</a></li>
+              <li><a href="#">技术支持(2)</a></li>
+              <li><a href="#">关于我们(6)</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="box text-left">
+          <div class="box-icon2">
+            <h3>最新联盟成员</h3>
+            <ul>
+              <li><a href="#">2013年11月</a></li>
+              <li><a href="#">2013年10月</a></li>
+              <li><a href="#">2013年9月</a></li>
+              <li><a href="#">2013年8月</a></li>
+              <li><a href="#">2013年7月</a></li>
+              <li><a href="#">2013年6月</a></li>
+              <li><a href="#">2013年5月</a></li>
+              <li><a href="#">2013年4月</a></li>
+              <li><a href="#">2013年3月</a></li>
+              <li><a href="#">2013年2月</a></li>
+              <li><a href="#">2013年1月</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="box text-right">
+          <div class="box-icon3">
+            <h3>最新数据应用</h3>
+            <ul>
+              <li><a href="#">实时民情播报</a></li>
+              <li><a href="#">舆情监控</a></li>
+              <li><a href="#">微博人才招聘</a></li>
+              <li><a href="#">主题订阅</a></li>
+              <li><a href="#">人脸识别</a></li>
+              <li><a href="#">精确城市用电统计控制</a></li>
+              <li><a href="#">品牌影响力分析</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="box text-left">
+          <div class="box-icon4">
+            <h3>最新数据成果</h3>
+            <ul>
+              <li><a href="#">数据服务(4)</a></li>
+              <li><a href="#">数据产品(2)</a></li>
+              <li><a href="#">数据联盟(2)</a></li>
+              <li><a href="#">会员中心(4)</a></li>
+              <li><a href="#">技术支持(2)</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% include "datamarket/views/email.html" %}
+{% endblock %}

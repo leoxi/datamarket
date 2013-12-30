@@ -1,0 +1,69 @@
+{% extends "datamarket/views/base.html" %}
+{% block script %}
+$(function(){
+    $(".nav").jNavExe();
+    $(".mail").placeholder();
+    backTop();
+});
+{% endblock %}
+{% block body %}
+<div class="main">
+  <div class="main-content">
+    <div class="main-title">
+
+      {% include "datamarket/views/crumbs.html" %}
+
+      <div class="search">
+	<div class="search-c">
+	  <div><input type="text" value="标题内容关键字" class="input-text"><i class="icon icon-search"></i></div>	
+	  <input type="submit" value="搜索" class="btn">
+	</div>
+	<div class="tag"></div>
+      </div>
+    </div>
+
+    {% include "datamarket/views/account/sidebar.html" %}
+
+    <div class="main-content-c">
+      <div class="main-content-list">
+	<ul class="list">
+	  <li>
+	    <div class="list-title" style="margin-bottom:10px;"><h3>我发布的应用</h3></div>
+	    <div class="accountListBox">
+              <table class="accountTable">
+                <tbody>
+                  <tr>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>上传时间</th>
+                    <th>来源分类</th>
+                    <th>来源</th>
+                    <th>链接</th>
+                    <th>描述</th>
+                    <!-- <th>操作</th> -->
+                  </tr>
+                  {% for i in info %}
+                  <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.price }}</td>
+                    <td>{{ i.pubtime|date:shortDate }}</td>
+                    <td>{{ i.catalog_name }}</td>
+                    <td>{{ i.source_name }}</td>
+                    <td>{{ i.file_links }}</td>
+                    <td width="25%">{{ i.desc }}</td>
+                    <!-- <td> 删除 编辑 文件</td> -->
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+	  </li>
+	</ul>
+      </div>
+    </div>
+    <div class="clearit"></div>
+  </div>
+</div>
+{% endblock %}
